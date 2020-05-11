@@ -40,11 +40,15 @@ public class merchant_landing_page extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.merchant_landing_page);
+        //Yeh sab kyun
 
         mFirebaseAuth = FirebaseAuth.getInstance();
+        //to get info about this client
+        //ye sab samajh nhi aaya
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         merchantName = findViewById(R.id.company_name_text_view);
+
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         ref.child("Merchants").child(Objects.requireNonNull(mFirebaseAuth.getCurrentUser()).getUid()).addValueEventListener(new ValueEventListener() {
@@ -59,9 +63,10 @@ public class merchant_landing_page extends Activity {
 
             }
         });
+        //Ask someone
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview2);
-        final ProductSoldListAdapter adapter = new ProductSoldListAdapter(this);
+        final ProductSoldListAdapter adapter = new ProductSoldListAdapter(this); //Baad mein
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         ProductViewModel pp= MainActivity.mproductViewModel; // get the database

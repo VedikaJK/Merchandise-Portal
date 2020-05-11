@@ -6,9 +6,9 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -22,18 +22,19 @@ public class Displayproducts extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_displayproducts);
         String interestedtype=getIntent().getStringExtra("typename");
-
+        final Context context=this;
         RecyclerView recyclerView = findViewById(R.id.recyclerview); // to display all items put on sale by all the merchants
         final ProductListAdapter adapter = new ProductListAdapter(this, new OnItemClickListener() {
+
             @Override
+
             public void onItemClick(product item) {
-                ProductViewModel pp2= MainActivity.mproductViewModel;
+                ProductViewModel pp2= MainActivity.mproductViewModel;//??
                //item.purchased="true";
                 //pp2.update(item);
-               // Toast.makeText(getApplicationContext(), " Item Bought", Toast.LENGTH_SHORT).show();
-                Intent gotoPurchase=new Intent(Displayproducts.this, ProductPurchase.class);
-                gotoPurchase.putExtra("displayedproduct", (Parcelable) item);
-                startActivity(gotoPurchase);
+                //Toast.makeText(getApplicationContext(), " Item Bought", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, ProductPurchase.class);
+                startActivity(intent);
                 finish();
             }
         });
