@@ -46,6 +46,9 @@
         <activity android:name=".user_landing_page" />
         <activity android:name=".merchant_landing_page" />
         <activity android:name=".add_apparels" />
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true" />
     </application>
 
 </manifest>
